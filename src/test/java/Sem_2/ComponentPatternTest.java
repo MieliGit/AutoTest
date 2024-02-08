@@ -11,6 +11,7 @@ public class ComponentPatternTest {
     void onePortfolioTest() {
         //given
         Composite composite = new Composite();
+        //тут и далее надо использовать не просто .add, а метод .addProduct - composite.addProduct(new Product(85L));
         composite.add(new Product(85L));
         composite.add(new Product(90L));
         composite.add(new Product(45L));
@@ -27,9 +28,12 @@ public class ComponentPatternTest {
         Composite compositeNextLevelOne = new Composite();
         Composite compositeNextLevelTwo = new Composite();
 
+        //тут должно быть compositeFirstLevel.addProduct(compositeNextLevelOne), иначе будет зациклинность
         compositeFirstLevel.add(compositeFirstLevel);
+        //тут должно быть compositeFirstLevel.addProduct(compositeNextLevelTwo), иначе будет зациклинность
         compositeFirstLevel.add(compositeFirstLevel);
 
+        //тут и далее надо использовать не просто .add, а метод .addProduct, тогда всё будет работать
         compositeNextLevelOne.add(new Product(85L));
         compositeNextLevelOne.add(new Product(90L));
         compositeNextLevelOne.add(new Product(45L));
