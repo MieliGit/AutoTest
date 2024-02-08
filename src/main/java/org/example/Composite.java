@@ -8,10 +8,12 @@ public class Composite implements Products {
 
     private List<Products> products = new ArrayList<>();
 
+    //этот метод надо сделать public
     void addProduct(Products product) {
         products.add(product);
     }
 
+    //этот метод надо сделать public
     void removeProduct(Product product) {
         products.remove(product);
     }
